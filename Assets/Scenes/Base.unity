@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 1794850187}
   - component: {fileID: 1794850186}
   - component: {fileID: 1794850190}
+  - component: {fileID: 1794850191}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -988,6 +989,20 @@ MonoBehaviour:
   panel: {fileID: 1440063968}
   restartButton: {fileID: 467208956}
   nextButton: {fileID: 1362044480}
+--- !u!114 &1794850191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794850185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fdfaef1e360e04e9ea5e32ce63ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeController
+  isCountDown: 0
+  gameTime: 10
 --- !u!1 &1939235931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +2858,14 @@ PrefabInstance:
     - target: {fileID: 644601278392294472, guid: 9bc151d1c31e39f499a0ca8a64cf36ff, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8067709201262885394, guid: 9bc151d1c31e39f499a0ca8a64cf36ff, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352037681459756608, guid: 9bc151d1c31e39f499a0ca8a64cf36ff, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

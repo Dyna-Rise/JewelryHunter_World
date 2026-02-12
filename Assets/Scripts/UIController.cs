@@ -21,6 +21,10 @@ public class UIController : MonoBehaviour
     GameObject player;
     PlayerController playerController;
 
+    // スコア追加
+    public GameObject scoreText;        // スコアテキスト
+    public int stageScore = 0;          // ステージスコア
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,6 +46,9 @@ public class UIController : MonoBehaviour
         //プレイヤー情報とPlayerControllerコンポーネントの取得
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
+
+        //スコア追加
+        UpdateScore();
     }
 
     // 画像を非表示にする
@@ -109,5 +116,20 @@ public class UIController : MonoBehaviour
             }
 
         }
+    }
+
+    // 現在スコアのUI表示更新
+    void UpdateScore()
+    {
+        int currentScore = stageScore + GameManager.totalScore;
+        scoreText.GetComponent<TextMeshProUGUI>().text = currentScore.ToString();
+    }
+
+    // プレイヤーから呼び出される 獲得スコアを追加した上でのUI表示更新
+    public void UpdateScore(int score)
+    {
+        stageScore += score;
+        int currentScore = stageScore + GameManager.totalScore;
+        scoreText.GetComponent<TextMeshProUGUI>().text = currentScore.ToString();
     }
 }

@@ -75,7 +75,16 @@ public class UIController : MonoBehaviour
             if(timeController != null)
             {
                 timeController.IsTimeOver(); //停止フラグをON
+
+                // 整数に型変換することで小数を切り捨てる
+                int time = (int)timeController.GetDisplayTime();
+                GameManager.totalScore += time * 10; // 残り時間をスコアに加える
             }
+
+            GameManager.totalScore += stageScore; //トータルスコアの最終確定
+            stageScore = 0; //ステージスコアリセット
+
+            UpdateScore();  //スコア表示の更新
         }
         else if(GameManager.gameState == GameState.GameOver)
         {

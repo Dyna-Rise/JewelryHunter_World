@@ -113,6 +113,7 @@ public class UIController : MonoBehaviour
                 int time = (int)timeController.GetDisplayTime();
                 // タイム更新
                 timeText.GetComponent<TextMeshProUGUI>().text = time.ToString();
+                Debug.Log(time);
 
                 if (useTime && timeController.isCountDown && time <= 0) //カウントダウンモードで時間が0なら
                 {

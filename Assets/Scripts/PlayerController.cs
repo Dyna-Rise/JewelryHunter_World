@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         //取得した情報をVector2形式で抽出
         Vector2 moveInput = value.Get<Vector2>();
         axisH = moveInput.x; //そのX成分をaxisHに代入
+        //Debug.Log("Move:" + axisH);
     }
 
     void OnJump(InputValue value)

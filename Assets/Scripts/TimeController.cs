@@ -42,7 +42,7 @@ public class TimeController : MonoBehaviour
                     IsTimeOver(); //停止フラグを立てる
                 }
             }
-            Debug.Log("TIMES: " + displayTime);
+            //Debug.Log("TIMES: " + displayTime);
         }
     }
 

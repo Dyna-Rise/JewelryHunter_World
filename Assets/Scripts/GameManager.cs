@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public static int arrows = 10;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         gameState = GameState.InGame; // ステータスをゲーム中にする
         soundPlayer = GetComponent<AudioSource>(); //AudioSourceを参照する

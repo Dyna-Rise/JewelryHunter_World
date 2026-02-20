@@ -25,6 +25,14 @@ public class UIController : MonoBehaviour
     public GameObject scoreText;        // スコアテキスト
     public int stageScore = 0;          // ステージスコア
 
+    //アイテム所持と体力のUI
+    public TextMeshProUGUI keyText;
+    int currentKeys;
+    public TextMeshProUGUI arrowText;
+    int currentArrows;
+    public Slider lifeSlider;
+    int currentLife;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,7 +69,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameState == GameState.GameClear)
+        if (GameManager.gameState == GameState.GameClear)
         {
             // ゲームクリア
             mainImage.SetActive(true);  // 画像を表示する
@@ -72,7 +80,7 @@ public class UIController : MonoBehaviour
             mainImage.GetComponent<Image>().sprite = gameClearSpr;  // 画像を設定する
 
             //時間カウントを停止
-            if(timeController != null)
+            if (timeController != null)
             {
                 timeController.IsTimeOver(); //停止フラグをON
 
@@ -86,7 +94,7 @@ public class UIController : MonoBehaviour
 
             UpdateScore();  //スコア表示の更新
         }
-        else if(GameManager.gameState == GameState.GameOver)
+        else if (GameManager.gameState == GameState.GameOver)
         {
             // ゲームオーバー
             mainImage.SetActive(true);  // 画像を表示する
@@ -102,9 +110,9 @@ public class UIController : MonoBehaviour
                 timeController.IsTimeOver(); //停止フラグをON
             }
         }
-        else if(GameManager.gameState == GameState.InGame)
+        else if (GameManager.gameState == GameState.InGame)
         {
-            if(player == null) { return; } //プレイヤー消滅後は何もしない
+            if (player == null) { return; } //プレイヤー消滅後は何もしない
 
             //タイムを更新する
             if (timeController != null && useTime)
@@ -125,6 +133,25 @@ public class UIController : MonoBehaviour
                 }
             }
 
+        }
+
+        //把握していた鍵の数と、GameManagerの鍵の数に違いがでたら、正しい数となるようUIを更新
+        if (currentKeys != GameManager.keys)
+        {
+            currentKeys = GameManager.keys;
+            keyText.text = currentKeys.ToString();
+        }
+        //把握していた矢の数と、GameManagerの矢の数に違いが出たら、正しい数となるようUIを更新
+        if (currentArrows != GameManager.arrows)
+        {
+            currentArrows = GameManager.arrows;
+            arrowText.text = currentArrows.ToString();
+        }
+        //把握していた体力とPlayerControllerの体力に違いがでたら、正しい値となるようにUIを更新
+        if(currentLife != PlayerController.playerLife)
+        {
+            currentLife = PlayerController.playerLife;
+            lifeSlider.value = currentLife;
         }
     }
 

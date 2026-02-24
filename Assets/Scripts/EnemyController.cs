@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
         {
             //三角関数Sinに角度（時間経過）を与えて正/負の値を算出
             float val = Mathf.Sin(Time.time * 50);
-            if(val > 0) //正なら表示
+            if (val > 0) //正なら表示
             {
                 GetComponent<SpriteRenderer>().enabled = true;
             }
@@ -104,28 +104,29 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!inDamage) { 
-        //ぶつかった相手がArrowだったら
-        if(collision.gameObject.tag == "Arrow")
+        if (!inDamage)
         {
-            //ぶつかった矢のスクリプトを取得
-            ArrowController arrowCnt = collision.gameObject.GetComponent<ArrowController>();
-            //相手の変数attackPower分だけ体力を減らす
-            enemyLife -= arrowCnt.attackPower;
-
-            //ダメージ管理フラグを立てる
-            inDamage = true;
-            //0.25秒後にフラグが降りる
-            Invoke("DamageEnd", 0.25f);
-
-            if(enemyLife <= 0) //死亡演出
+            //ぶつかった相手がArrowだったら
+            if (collision.gameObject.tag == "Arrow")
             {
-                rbody.linearVelocity = Vector2.zero; //動きを止める
-                GetComponent<CircleCollider2D>().enabled = false;
-                rbody.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
-                Destroy(gameObject, 0.3f);
+                //ぶつかった矢のスクリプトを取得
+                ArrowController arrowCnt = collision.gameObject.GetComponent<ArrowController>();
+                //相手の変数attackPower分だけ体力を減らす
+                enemyLife -= arrowCnt.attackPower;
+
+                //ダメージ管理フラグを立てる
+                inDamage = true;
+                //0.25秒後にフラグが降りる
+                Invoke("DamageEnd", 0.25f);
+
+                if (enemyLife <= 0) //死亡演出
+                {
+                    rbody.linearVelocity = Vector2.zero; //動きを止める
+                    GetComponent<CircleCollider2D>().enabled = false;
+                    rbody.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
+                    Destroy(gameObject, 0.3f);
+                }
             }
-        }
         }
     }
 

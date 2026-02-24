@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 
 public class TitleManager : MonoBehaviour
 {
     public string sceneName; //スタートボタンを押して読み込むシーン名
+
+    public GameObject startButton; //スタートボタンオブジェクト
+    public GameObject continueButton; //コンテニューボタンオブジェクト
+
     //public InputAction submitAction; //決定のInputAction;
 
     //void OnEnable()
@@ -25,7 +31,14 @@ public class TitleManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // PlayerPrefsからJSON文字列をロード
+        string jsonData = PlayerPrefs.GetString("SaveData");
+
+        // JSONデータが存在しない場合、エラーを回避し処理を中断
+        if (string.IsNullOrEmpty(jsonData))
+        {
+            continueButton.GetComponent<Button>().interactable = false; //ボタン機能を無効
+        }
     }
 
     // Update is called once per frame
@@ -52,7 +65,15 @@ public class TitleManager : MonoBehaviour
     //シーンを読み込むメソッド作成
     public void Load()
     {
-        GameManager.totalScore = 0; //新しくゲームを始めるにあたってスコアをリセット
+        SaveDataManager.Initialize(); //セーブデータを初期化
+        //GameManager.totalScore = 0; //新しくゲームを始めるにあたってスコアをリセット
+        SceneManager.LoadScene(sceneName);
+    }
+
+    //セーブデータを読み込んでから始める
+    public void ContinueLoad()
+    {
+        SaveDataManager.LoadGameData(); //セーブデータを読み込む
         SceneManager.LoadScene(sceneName);
     }
 }

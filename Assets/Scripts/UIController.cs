@@ -69,9 +69,10 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("UIController Update called. Current GameState: " + GameManager.gameState); // 追加
         if (GameManager.gameState == GameState.GameClear)
         {
-            Debug.Log("UIのゴール発動");
+            //Debug.Log("UIのゴール発動");
 
             // ゲームクリア
             mainImage.SetActive(true);  // 画像を表示する
@@ -123,7 +124,7 @@ public class UIController : MonoBehaviour
                 int time = (int)timeController.GetDisplayTime();
                 // タイム更新
                 timeText.GetComponent<TextMeshProUGUI>().text = time.ToString();
-                Debug.Log(time);
+                //Debug.Log(time);
 
                 if (useTime && timeController.isCountDown && time <= 0) //カウントダウンモードで時間が0なら
                 {

@@ -145,7 +145,7 @@ public class BossController : MonoBehaviour
     //ステージクリアのためにGoalメソッドを発動、Bossを削除
     void BossDestroy()
     {
-        Debug.Log("Goal発動");
+        //Debug.Log("Goal発動");
 
         player.GetComponent<PlayerController>().Goal();
         Destroy(gameObject);

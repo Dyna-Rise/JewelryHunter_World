@@ -115,11 +115,13 @@ public class SaveDataManager : MonoBehaviour
         GameManager.keys = 0;
         if (GameManager.keyGot != null)
         {
-            GameManager.keyGot.Clear(); //ディクショナリーを削除
+            //GameManager.keyGot.Clear(); //ディクショナリーを削除
+            GameManager.keyGot = null;
         }
         if (World_UIController.keyOpened != null)
         {
-            World_UIController.keyOpened.Clear(); //ディクショナリーを削除
+            //World_UIController.keyOpened.Clear(); //ディクショナリーを削除
+            World_UIController.keyOpened = null;
         }
         GameManager.arrows = 10;
     }

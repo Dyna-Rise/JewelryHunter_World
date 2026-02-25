@@ -63,18 +63,26 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == GameState.GameClear)
         {
+            //Debug.Log("LateClear");
             soundPlayer.Stop(); //ステージ曲を止める
             soundPlayer.PlayOneShot(meGameClear); //ゲームクリアの音を１回だけ鳴らす
             isGameClear = true; //クリアフラグ
-            gameState = GameState.GameEnd; //ゲームの状態を更新
+            Invoke("GameStatusChange", 0.02f);
+            //gameState = GameState.GameEnd; //ゲームの状態を更新
         }
         else if (gameState == GameState.GameOver)
         {
             soundPlayer.Stop(); //ステージ曲を止める
             soundPlayer.PlayOneShot(meGameOver); //ゲームオーバーの音を１回だけ鳴らす
             isGameOver = true; //ゲームオーバーフラグ
-            gameState = GameState.GameEnd; //ゲームの状態を更新
+            Invoke("GameStatusChange", 0.02f);
+            //gameState = GameState.GameEnd; //ゲームの状態を更新
         }
+    }
+
+    void GameStatusChange()
+    {
+        gameState = GameState.GameEnd; //ゲームの状態を更新
     }
 
     //リスタート

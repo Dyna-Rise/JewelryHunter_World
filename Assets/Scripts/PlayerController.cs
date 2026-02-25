@@ -263,6 +263,7 @@ public class PlayerController : MonoBehaviour
     {
         animator.Play(goalAnime);
         GameManager.gameState = GameState.GameClear; //ステータス切り替え
+        Debug.Log("PlayerController Goal: GameState set to GameClear"); // 追加
         GameStop(); //プレイヤーのVelocityをストップ
     }
 

@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false; //ゲームオーバー判定
 
     //ワールドマップで最後に入ったエントランスのドア番号
-    public static int currentDoorNumber = 0;
+    public static int currentDoorNumber = 99;
 
     //所持アイテム 鍵の管理
-    public static int keys = 1;
+    public static int keys = 0;
     //どのステージの鍵が入手済みかを管理
     public static Dictionary<string, bool> keyGot; //シーン名,true/false
 
